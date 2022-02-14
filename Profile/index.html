@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Practoeduca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/Assets/Logo.svg">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type='module' src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js'></script>
+    <script nomodule='' src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js'></script>
+</head>
+
+<body onload="load();">
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDTZlc11hoFoV5EJnCwAVWcSx52vvEWX4o",
+            authDomain: "practoeduca4535.firebaseapp.com",
+            databaseURL: "https://practoeduca4535-default-rtdb.firebaseio.com/",
+            projectId: "practoeduca4535",
+            storageBucket: "practoeduca4535.appspot.com",
+            messagingSenderId: "879047101871",
+            appId: "1:879047101871:web:7898febee0d6b93d0ab35a"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <div id="title-d-container" class="form">
+        <div class="element" onclick="openMail();">
+            <h3>Welcome</h3>
+            <h3 id="user">User</h3>
+        </div>
+    </div>
+    <div id="title-d-container" class="form">
+        <div class="element-2" onclick="openUser();">
+            <h4>Change Username</h4>
+        </div>
+    </div>
+    <div id="title-d-container" class="form">
+        <div class="element-2" onclick="openPass();">
+            <h4>Change password</h4>
+        </div>
+    </div>
+    <div id="title-d-container" class="form">
+        <div class="element-3" onclick="logout();">
+            <h4>Logout</h4>
+        </div>
+    </div>
+
+    <div class="backlay hide" id="backlay"></div>
+    <div class="backlay hide" id="backlay2"></div>
+
+    <div class="form">
+        <div id="USer" class="mail-sender hide">
+            <input type="text" placeholder="Username" id="Username">
+
+            <button class="send" onclick="change();">Change</button>
+        </div>
+    </div>
+
+    <div class="form">
+        <div id="Pass" class="mail-sender hide">
+            <input type="text" placeholder="Password" id="Password">
+
+            <button class="send" onclick="changePass();">Change</button>
+        </div>
+    </div>
+
+
+
+    <!-- ------------- Bottom Nav ------------- -->
+    <div class="container">
+        <div class="bottom-nav">
+
+            <input type="radio" name="radio" value="1" id="tab-1" onchange="tab('Home')" />
+            <label class="icon home" for="tab-1">
+      <ion-icon style="margin-left: -5px;" name="home-outline"></ion-icon>
+      <ion-icon class="fill" name="home"></ion-icon>
+    </label>
+
+            <input type="radio" name="radio" value="2" id="tab-2" onchange="tab('Chat')" />
+            <label class="icon cart" for="tab-2">
+      <ion-icon style="margin-left: -5px;" name="chatbubble-ellipses-outline"></ion-icon>
+      <ion-icon class="fill" name="chatbubble-ellipses"></ion-icon>
+    </label>
+
+            <input type="radio" name="radio" value="3" id="tab-3" onchange="tab('Weather')" />
+            <label class="icon fav" for="tab-3">
+      <ion-icon style="margin-left: -5px;" name="cloud-outline"></ion-icon>
+      <ion-icon class="fill" name="cloud"></ion-icon>
+    </label>
+
+            <input type="radio" name="radio" value="4" id="tab-4" checked/>
+            <label class="icon profile" for="tab-4">
+      <ion-icon style="margin-left: -5px;" name="person-outline"></ion-icon>
+      <ion-icon class="fill" name="person"></ion-icon>
+    </label>
+
+        </div>
+    </div>
+
+    <script src="/common.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

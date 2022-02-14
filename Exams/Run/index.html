@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Practoeduca</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/Logo.svg">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+</head>
+
+<body onload="load();">
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDTZlc11hoFoV5EJnCwAVWcSx52vvEWX4o",
+            authDomain: "practoeduca4535.firebaseapp.com",
+            databaseURL: "https://practoeduca4535-default-rtdb.firebaseio.com/",
+            projectId: "practoeduca4535",
+            storageBucket: "practoeduca4535.appspot.com",
+            messagingSenderId: "879047101871",
+            appId: "1:879047101871:web:7898febee0d6b93d0ab35a"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <div id="countdown" class="countdown">
+
+        <div class="cpuntD slide-bottom">Get Ready</div>
+
+        <div class="countdown__inner">
+            <svg class="countdown__numbers" viewBox="0 0 100 100">
+      <defs>
+        <path class="countdown__num-path-1" d="M40,28 55,22 55,78"/>
+        <path class="countdown__num-join-1-2" d="M55,78 55,83 a17,17 0 1,0 34,0 a20,10 0 0,0 -20,-10"/>
+        <path class="countdown__num-path-2" d="M69,73 l-35,0 l30,-30 a16,16 0 0,0 -22.6,-22.6 l-7,7"/>
+        <path class="countdown__num-join-2-3" d="M28,69 Q25,44 34.4,27.4"/>
+        <path class="countdown__num-path-3" d="M30,20 60,20 40,50 a18,15 0 1,1 -12,19"/>
+      </defs>
+      <path class="countdown__numbers-path" 
+            d="M-10,20 60,20 40,50 a18,15 0 1,1 -12,19 
+               Q25,44 34.4,27.4
+               l7,-7 a16,16 0 0,1 22.6,22.6 l-30,30 l35,0 L69,73 
+               a20,10 0 0,1 20,10 a17,17 0 0,1 -34,0 L55,83 
+               l0,-61 L40,28" />
+    </svg>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <h1 id="questionNo">1</h1>
+    </div>
+
+    <div class="transplate" id="transplate"></div>
+
+    <div class="endlay hide" id="endlay">
+        <h2 class="notice" id="notice">You have completed your exam paper developed by <span id="teacher"></span></h2>
+        <div class="button" id="result" onclick="result();">show me the result</div>
+        <div class="button" id="exit" onclick="exit();">exit</div>
+    </div>
+
+    <div class="quizPlat" id="quizPlat" hidden>
+
+        <div class="header">
+            <img src="" alt="logo" id="logo">
+        </div>
+        <div class="slide-bottom head-question hide" id="head-question">
+            <h2 id="question">Question</h2>
+        </div>
+
+        <div class="options hide" id="options">
+
+            <div class="option scale-up white" id="option1_button">
+                <div class="no A">A</div>
+                <div class="text" id="option1">Ohmee yeah...</div>
+            </div>
+            <div class="option scale-up white" id="option2_button">
+                <div class="no B">B</div>
+                <div class="text" id="option2">Ohmee yeah...</div>
+            </div>
+            <div class="option scale-up white" id="option3_button">
+                <div class="no C">C</div>
+                <div class="text" id="option3">Ohmee yeah...</div>
+            </div>
+            <div class="option scale-up bottom white" id="option4_button">
+                <div class="no D">D</div>
+                <div class="text" id="option4">Ohmee yeah...</div>
+            </div>
+
+        </div>
+        <div id="input" class="hide">
+            <input type="text" placeholder="Answer" onchange oninput="INPUTCHANGED()" id="answer">
+            <div class="Next" id="next" style="bottom: -100px;">Next</div>
+        </div>
+        <div class="TF hide" id="TF">
+
+            <div class="TF_option left" id="True">
+                <div class="no A">A</div>
+                <div class="text" id="TT">True</div>
+            </div>
+            <div class="TF_option right" id="False">
+                <div class="no B">B</div>
+                <div class="text" id="FF">False</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://loginsignup.examejectapp.repl.co/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

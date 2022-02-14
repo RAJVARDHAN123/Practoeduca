@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title id="title-exam">Practoeduca</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/Logo.svg">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stysheet.css">
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+</head>
+
+<body onload="load();">
+    <!-- SMTPJS -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDTZlc11hoFoV5EJnCwAVWcSx52vvEWX4o",
+            authDomain: "practoeduca4535.firebaseapp.com",
+            databaseURL: "https://practoeduca4535-default-rtdb.firebaseio.com/",
+            projectId: "practoeduca4535",
+            storageBucket: "practoeduca4535.appspot.com",
+            messagingSenderId: "879047101871",
+            appId: "1:879047101871:web:7898febee0d6b93d0ab35a"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    <!-- Header Quiz-Maker -->
+    <div class="header">
+        <h2>Quiz-Maker</h2>
+        <div id="return-header" class="return-icon"><i class="fad fa-angle-left"></i></div>
+    </div>
+    <!-- --------------------------------------------------------------------------------------------------- -->
+
+    <div class="er-in" id="mdLess">Please Your File Should be 2 Megabytes or Less</div>
+    <div class="er-in" id="typeImage">Please make sure to upload An Image File Type</div>
+
+
+    <!-- Uploader -->
+    <div id="upload-container-container" class="upload-container">
+        <div id="uploadArea" class="upload-area">
+            <!-- Header -->
+            <div class="upload-area__header">
+                <h3 class="upload-area__title">Upload your Logo (Optional)</h3>
+            </div>
+            <!-- End Header -->
+
+            <!-- Drop Zoon -->
+            <div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
+                <span class="drop-zoon__icon">
+          <i class='fad fa-image'></i>
+        </span>
+                <p class="drop-zoon__paragraph">Click here to select</p>
+                <span id="loadingText" class="drop-zoon__loading-text">Please Wait</span>
+                <img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image" draggable="false">
+                <input type="file" id="fileInput" class="drop-zoon__file-input" accept="image/*">
+            </div>
+            <!-- End Drop Zoon -->
+
+            <!-- File Details -->
+            <div id="fileDetails" class="upload-area__file-details file-details">
+                <h3 class="file-details__title">Uploaded File</h3>
+
+                <div id="uploadedFile" class="uploaded-file">
+                    <div class="uploaded-file__icon-container">
+                        <i class='bx bxs-file-blank uploaded-file__icon'></i>
+                        <span class="uploaded-file__icon-text"></span>
+                        <!-- Data Will be Comes From Js -->
+                    </div>
+
+                    <div id="uploadedFileInfo" class="uploaded-file__info">
+                        <span class="uploaded-file__name">Project 1</span>
+                        <span class="uploaded-file__counter">0%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- End File Details -->
+        </div>
+        <!-- End Upload Area -->
+    </div>
+
+
+    <!-- ------------------------------------------------------------------------------------------------------ -->
+
+    <!-- Intro Form -->
+    <div id="title-d-container" class="form">
+        <div class="title-discription">
+            <label for="title-container"><h3 style="text-align: left; margin-left: 20px;">Title of Exam/Name of Chapter <span style="color: rgb(255, 0, 85);">*</span></h3></label>
+            <div class="input-part">
+                <input onchange onpropertychange onkeyuponpaste oninput="setTitle();" type="text" id="title-container" placeholder="Title">
+            </div>
+            <label for="discription-container"><h3 style="text-align: left; margin-left: 20px;">Discription (Optional)</h3></label>
+            <div class="input-part">
+                <input type="text" onchange onpropertychange onkeyuponpaste oninput="setDescription();" id="discription-container" placeholder="Discription">
+            </div>
+
+            <label for="Teacher_Name-container"><h3 style="text-align: left; margin-left: 20px;">Enter your name <span style="color: rgb(255, 0, 85);">*</span></h3></label>
+            <div class="input-part">
+                <input onchange onpropertychange onkeyuponpaste oninput="setTeacherName();" type="text" id="Teacher_Name-container" placeholder="Name">
+            </div>
+
+            <button id="selectClass" onclick="selectClass()" class="btn-hover color-9">Select Class</button>
+
+        </div>
+    </div>
+    <!-- ------------------------------------------------------------------------ -->
+
+    <!-- Questions Container -->
+    <div id="question-container-container" class="form">
+        <div class="question-container" id="question-container">
+        </div>
+    </div>
+
+
+
+
+    <!-- Question Selector Dropdown -->
+    <div id="questionTypeSelector" class="Question-Selector-Dropdown hide">
+        <div class="-header">Select Question Type
+            <i class="fas fa-times" onclick="closeDopupQuestionSelector()" id="close-Dopup-Question-Selector"></i></div>
+        <div class="buttons ">
+            <button id="questionSelectorButton1" onclick="addButton1()" class="btn-hover color-1">Objective</button>
+            <button id="questionSelectorButton2" onclick="addButton2()" class="btn-hover color-1">Subjective</button>
+            <button id="questionSelectorButton3" onclick="addButton3()" class="btn-hover color-1">True/False</button>
+        </div>
+    </div>
+
+    <!--------------------------------------------Question Creator-------------------------------------------->
+
+    <div class="er-in" id="plckit">Please mark one option as correct</div>
+
+    <!-- Objective Question -->
+
+    <div class="form">
+        <div id="objective-question-creator-container" class="question-creator-container hide">
+            <h3 style="text-align: center; margin-top: -10px; color: wheat;">Question:- <span id="question-no-objective">1</span></h3>
+            <label for="question-objective-container"><h3 style="text-align: left; margin-left: 20px;">Question <span style="color: rgb(255, 0, 85);">*</span></h3></label>
+            <div class="input-part">
+                <input type="text" id="question-objective-container" placeholder="Question">
+            </div>
+            <li style="text-align: center; position: absolute; list-style: none;"><label style="margin-left: 10px; margin-top: 7.5px;"><input type="checkbox" id="option1_correct_option" name=""><div title="Correct Option" class="icon-box"><i class="fa fa-check" aria-hidden="true"></i></div></label></li>
+            <div style=" margin-left: 30px;" class="input-part">
+                <input type="text" id="Option-1-objective-container" placeholder="Option 1">
+            </div>
+            <li style="text-align: center; position: absolute; list-style: none;"><label style="margin-left: 10px; margin-top: 7.5px;"><input type="checkbox" id="option2_correct_option" name=""><div title="Correct Option" class="icon-box"><i class="fa fa-check" aria-hidden="true"></i></div></label></li>
+            <div style=" margin-left: 30px;" class="input-part">
+                <input type="text" id="Option-2-objective-container" placeholder="Option 2">
+            </div>
+            <li style="text-align: center; position: absolute; list-style: none;"><label style="margin-left: 10px; margin-top: 7.5px;"><input type="checkbox" id="option3_correct_option" name=""><div title="Correct Option" class="icon-box"><i class="fa fa-check" aria-hidden="true"></i></div></label></li>
+            <div style=" margin-left: 30px;" class="input-part">
+                <input type="text" id="Option-3-objective-container" placeholder="Option 3">
+            </div>
+            <li style="text-align: center; position: absolute; list-style: none;"><label style="margin-left: 10px; margin-top: 7.5px;"><input type="checkbox" id="option4_correct_option" name=""><div title="Correct Option" class="icon-box"><i class="fa fa-check" aria-hidden="true"></i></div></label></li>
+            <div style=" margin-left: 30px;" class="input-part">
+                <input type="text" id="Option-4-objective-container" placeholder="Option 4">
+            </div>
+            <div class="input-part">
+                <button id="add-button-objective" onclick="setQuestionAnswerObjective();" class="btn-hover color-7">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subjective Question -->
+
+    <div class="form">
+        <div id="subjective-question-creator-container" class="question-creator-container hide">
+            <h3 style="text-align: center; margin-top: -10px; color: wheat;">Question:- <span id="question-no-subjective">1</span></h3>
+            <label for="question-subjective-container"><h3 style="text-align: left; margin-left: 20px;">Question <span style="color: rgb(255, 0, 85);">*</span></h3></label>
+            <div class="input-part">
+                <input type="text" id="question-subjective-container" placeholder="Question">
+            </div>
+            <label for="answer-subjective-container"><h3 style="text-align: left; margin-left: 20px;">Answer  <span style="color: rgb(255, 0, 85);">*</span></h3></label>
+            <div class="input-part">
+                <input type="text" id="answer-subjective-container" placeholder="Answer">
+            </div>
+            <div class="input-part">
+                <button id="add-button-subjective" onclick="setQuestionAnswerSubjective();" class="btn-hover color-7">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- True/False Question -->
+
+    <div class="er-in" id="errorTF">Please mark one option from 'True/False' as correct</div>
+
+    <div class="form">
+        <div id="TF-question-creator-container" class="question-creator-container hide">
+            <h3 style="text-align: center; margin-top: -10px; color: wheat;">Question:- <span id="question-no-TF">1</span></h3>
+            <label for="question-TF-container"><h3 style="text-align: left; margin-left: 20px;">Question <span style="color: rgb(255, 0, 85);">*</span></h3></label>
+            <div class="input-part">
+                <input type="text" id="question-TF-container" placeholder="Question">
+            </div>
+            <div class="input-part">
+                <button id="True_button_TF" class="btn-hover untick">True</button>
+                <button id="False_button_TF" class="btn-hover untick">False</button>
+            </div>
+            <div class="input-part">
+                <button id="add-button-subjective" onclick="setQuestionAnswerTF();" class="btn-hover color-7">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------------------ -->
+
+    <!-- Subjective Question -->
+
+    <div class="form">
+        <div id="settings-container" class="settings-container hide">
+            <i class="fas fa-times hide" id="closeSettings" onclick="settings.close()"></i>
+
+            <h4 style="text-align: left; margin-left: 20px;">What should be the marks of Objective Questions?</h4>
+            <div class="input-part">
+                <input type="text" onchange onpropertychange onkeyuponpaste oninput="setOQM();" id="objective-Questions-Marks" placeholder="Marks" value="2">
+            </div>
+            <h4 style="text-align: left; margin-left: 20px;">What should be the marks of Subjective Question?</h4>
+            <div class="input-part">
+                <input type="text" onchange onpropertychange onkeyuponpaste oninput="setSQM();" id="subjectve-Questions-Marks" placeholder="Marks" value="2">
+            </div>
+            <h4 style="text-align: left; margin-left: 20px;">What should be the marks of True/False Question?</h4>
+            <div class="input-part">
+                <input type="text" onchange onpropertychange onkeyuponpaste oninput="setTFQM();" id="True-False-Questions-Marks" placeholder="Marks" value="2">
+            </div>
+        </div>
+    </div>
+
+    <div class="dropUP hide" id="class-selector-panel">
+        <div class="Class-Header" style="text-align: center;">
+            <h2>Select Class</h2>
+        </div>
+        <div class="buttons ">
+            <button id="questionSelectorButton1" onclick="class1()" class="btn-hover color-8">1</button>
+            <button id="questionSelectorButton2" onclick="class2()" class="btn-hover color-8">2</button>
+            <button id="questionSelectorButton3" onclick="class3()" class="btn-hover color-8">3</button>
+            <button id="questionSelectorButton4" onclick="class4()" class="btn-hover color-8">4</button>
+            <button id="questionSelectorButton5" onclick="class5()" class="btn-hover color-8">5</button>
+            <button id="questionSelectorButton6" onclick="class6()" class="btn-hover color-8">6</button>
+            <button id="questionSelectorButton7" onclick="class7()" class="btn-hover color-8">7</button>
+            <button id="questionSelectorButton8" onclick="class8()" class="btn-hover color-8">8</button>
+            <button id="questionSelectorButton9" onclick="class9()" class="btn-hover color-8">9</button>
+            <button id="questionSelectorButton10" onclick="class10()" class="btn-hover color-8">10</button>
+            <button id="questionSelectorButton11" onclick="class11()" class="btn-hover color-8">11</button>
+            <button id="questionSelectorButton12" onclick="class12()" class="btn-hover color-8">12</button>
+        </div>
+    </div>
+
+    <div class="overlay hide" id="overlay" onclick="overlay();"></div>
+    <div class="publish-box invisible" id="publish box">
+        <div class="Class-Header" style="text-align: center;">
+            <h2>Your exam has been succesfully published</h2>
+        </div>
+
+        <div class="container">
+            <a id="ShareCode" class="btn btn-2"><i class="fad fa-share-alt"></i>   Share Code</a>
+            <a class="btn btn-3" onclick="exit(); "><i class="fad fa-sign-out-alt"></i>   Exit</a>
+        </div>
+    </div>
+
+    <div class="er-in" id="errorPublish">There should be at least 5 questions in an exam</div>
+
+    <!-- Bottom Nav -->
+    <div class="container">
+        <div class="bottom-nav">
+
+            <input type="radio " name="radio " value="1 " id="tab-1 " onclick="Publish();" />
+            <label class="icon home " for="tab-1 ">
+                <img src="/Assets/Check Mark(Save).svg " alt=" ">
+                <img class="fill " src="/Assets/Check Mark(Save) Filled.svg " alt=" ">
+          </label>
+
+            <input type="radio " name="radio " value="2 " id="Add-feild " onclick="showSelector();" />
+            <label class="icon fav " for="Add-feild ">
+              <img src="/Assets/Add Mark(New).svg " alt=" ">
+              <img class="fill " id="Add-feild-filled-image " src="/Assets/Add Mark(New) Filled.svg " alt=" ">
+        </label>
+
+            <input type="radio " name="radio " value="3 " id="tab-3 " onclick="settings.open();" />
+            <label class="icon cart " for="tab-3 ">
+                <img src="/Assets/Gear Mark(Settings).svg " alt=" ">
+                <img class="fill " src="/Assets/Gear Mark(Settings) filled.svg " alt=" ">
+          </label>
+
+        </div>
+    </div>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script src="sketch.js "></script>
+</body>
+
+</html>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Practoeduca</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/Logo.svg">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <script type='module' src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js'></script>
+    <script nomodule='' src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js'></script>
+</head>
+
+<body onload="load();">
+    <!-- SMTPJS -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
+    <script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDTZlc11hoFoV5EJnCwAVWcSx52vvEWX4o",
+            authDomain: "practoeduca4535.firebaseapp.com",
+            databaseURL: "https://practoeduca4535-default-rtdb.firebaseio.com/",
+            projectId: "practoeduca4535",
+            storageBucket: "practoeduca4535.appspot.com",
+            messagingSenderId: "879047101871",
+            appId: "1:879047101871:web:7898febee0d6b93d0ab35a"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <div class="er-in" id="codeError">Please enter a correct code</div>
+
+    <!-- -------------Header------------- -->
+    <div class="center">
+        <h3>Hello, <span id="UserName">User</span></h3>
+    </div>
+    <!-- Slider -->
+    <div class="slider">
+        <a class="btn btn-1" onclick="openCreate();">Create Exam</a>
+        <a class="btn btn-3" onclick="openExam();">Run Exam</a>
+    </div>
+    <!-- Scroll -->
+    <h2>More</h2>
+
+    <div class="backlay hide" id="backlay"></div>
+
+    <div id="title-d-container" class="form">
+        <div class="element" onclick="openMail();">
+            <h3>Send Mail</h3>
+        </div>
+        <div class="element" onclick="tab('Weather')">
+            <h3>Check Weather</h3>
+        </div>
+    </div>
+
+    <div class="form">
+        <div id="mail-sender" class="mail-sender hide">
+            <input type="text" placeholder="Email Address" id="mail">
+            <textarea id="body" cols="10" rows="10">
+Hi there,
+
+Today we used Practoeduca
+                
+To use click on the given link
+                
+Regards,
+
+Your name
+            </textarea>
+
+            <button class="send" onclick="SendMail();">Send</button>
+        </div>
+    </div>
+
+
+    <div class="backlay hide" id="backlay"></div>
+    <div class="backlay hide" id="backlay2"></div>
+
+    <div class="form">
+        <div id="Coder" class="mail-sender hide">
+            <input type="text" placeholder="CODE" id="code">
+
+            <button class="send" onclick="openE();">Run</button>
+        </div>
+    </div>
+
+    <!-- ------------- Bottom Nav ------------- -->
+    <div class="container">
+        <div class="bottom-nav">
+
+            <input type="radio" name="radio" value="1" id="tab-1" checked/>
+            <label class="icon home" for="tab-1">
+      <ion-icon style="margin-left: -5px;" name="home-outline"></ion-icon>
+      <ion-icon class="fill" name="home"></ion-icon>
+    </label>
+
+            <input type="radio" name="radio" value="2" id="tab-2" onchange="tab('Chat')" />
+            <label class="icon cart" for="tab-2">
+      <ion-icon style="margin-left: -5px;" name="chatbubble-ellipses-outline"></ion-icon>
+      <ion-icon class="fill" name="chatbubble-ellipses"></ion-icon>
+    </label>
+
+            <input type="radio" name="radio" value="3" id="tab-3" onchange="tab('Weather')" />
+            <label class="icon fav" for="tab-3">
+      <ion-icon style="margin-left: -5px;" name="cloud-outline"></ion-icon>
+      <ion-icon class="fill" name="cloud"></ion-icon>
+    </label>
+
+            <input type="radio" name="radio" value="4" id="tab-4" onchange="tab('Profile')" />
+            <label class="icon profile" for="tab-4">
+      <ion-icon style="margin-left: -5px;" name="person-outline"></ion-icon>
+      <ion-icon class="fill" name="person"></ion-icon>
+    </label>
+
+        </div>
+    </div>
+
+    <script src="/common.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

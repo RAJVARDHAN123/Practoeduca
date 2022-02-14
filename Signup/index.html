@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Practoeduca</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/Logo.svg">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SMTPJS -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDTZlc11hoFoV5EJnCwAVWcSx52vvEWX4o",
+            authDomain: "practoeduca4535.firebaseapp.com",
+            databaseURL: "https://practoeduca4535-default-rtdb.firebaseio.com/",
+            projectId: "practoeduca4535",
+            storageBucket: "practoeduca4535.appspot.com",
+            messagingSenderId: "879047101871",
+            appId: "1:879047101871:web:7898febee0d6b93d0ab35a"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <div class="header">
+        <div class="body">Create Account</div>
+    </div>
+
+    <div id="Detailing">
+
+        <h2 style="margin-top: 100px; text-align: center;">Create Your Account</h2>
+        <h6 style="margin-top: -20px; text-align: center; font-weight: 500;">Please enter your info to create account</h6>
+
+        <!-- Inputs -->
+        <div class="input-container">
+            <div class="input-part iconInp">
+                <input type="text" onfocus="Focused('Name-container-icon');" onfocusout="FocusedOUT('Name-container-icon')" type="text" id="Name-container" placeholder="Your Full Name">
+                <i id="Name-container-icon" class="fal fa-user"></i>
+            </div>
+
+            <div class="input-part iconInp">
+                <input type="text" onfocus="Focused('email-container-icon');" onfocusout="FocusedOUT('email-container-icon'); FindeEmail();" type="text" id="email-container" placeholder="Your Email">
+                <i id="email-container-icon" class="fal fa-envelope"></i>
+            </div>
+
+            <div class="input-part iconInp">
+                <input type="text" type="text" onfocus="Focused('password-container-icon');" onfocusout="FocusedOUT('password-container-icon'); CheckPassword();" id="password-container" placeholder="Password">
+                <i id="password-container-icon" class="fal fa-lock-alt"></i>
+            </div>
+
+        </div>
+
+        <div class="er-in" id="errorEmail2">This Email address is invalid</div>
+        <div class="er-in" id="errorEmail">This Email address already exist</div>
+        <div class="er-in" id="SubmitError">Please fill all the above details correctly</div>
+
+        <div class="er-in" id="passError"> Password must contain 7 to 15 characters which contain at least one numeric digit and a special character</div>
+
+        <button onclick='Signup();' class="btn-hover color-9">Next</button>
+    </div>
+
+    <div id="Verification" hidden>
+        <h2 style="margin-top: 100px; text-align: center;">Verify Account</h2>
+        <h6 style="margin-top: -20px; text-align: center; font-weight: 500;">Enter the 4-digit verification code sent via email to verify your account</h6>
+
+        <div class="form" id="center">
+            <div class="input-container">
+                <fieldset name='number-code' data-number-code-form>
+                    <input id="code-no. 1" align='middle' type="number" min='0' max='9' name='number-code-0' data-number-code-input='0' required />
+                    <input id="code-no. 2" align='middle' type="number" min='0' max='9' name='number-code-1' data-number-code-input='1' required />
+                    <input id="code-no. 3" align='middle' type="number" min='0' max='9' name='number-code-2' data-number-code-input='2' required />
+                    <input id="code-no. 4" align='middle' type="number" min='0' max='9' name='number-code-3' data-number-code-input='3' required />
+                </fieldset>
+            </div>
+        </div>
+
+
+        <h5 onclick="SendMail();" class="resend-code">RESEND CODE</h5>
+
+        <button onclick='Verify();' class="btn-hover color-8">Verify</button>
+    </div>
+
+    <div class="er-in" id="doneMail">An email has been sent to your email account</div>
+    <div class="er-in" id="VerifyMail">Verification code is invalid</div>
+
+    <div id="AccountSuccesful" hidden>
+        <div class="header">
+            <div class="body">Account Created</div>
+        </div>
+
+
+        <h2 style="margin-top: 100px; text-align: center;">Account Created Successfully</h2>
+        <h6 style="margin-top: -20px; text-align: center; font-weight: 500;">Your account has been created successfully</h6>
+
+        <button style="margin-top: 20px;" onclick='share();' class="btn-hover color-9">Share</button>
+
+        <h5 onclick="home();" class="return">Return to home</h5>
+    </div>
+    <h6 id="place">Don't Have an account?
+        <a href="/">Create one</a>
+    </h6>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+    <script src="https://loginsignup.examejectapp.repl.co/script.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

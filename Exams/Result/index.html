@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Practoeduca</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/Logo.svg">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+</head>
+
+<body onload="load();">
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
+    <script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDTZlc11hoFoV5EJnCwAVWcSx52vvEWX4o",
+            authDomain: "practoeduca4535.firebaseapp.com",
+            databaseURL: "https://practoeduca4535-default-rtdb.firebaseio.com/",
+            projectId: "practoeduca4535",
+            storageBucket: "practoeduca4535.appspot.com",
+            messagingSenderId: "879047101871",
+            appId: "1:879047101871:web:7898febee0d6b93d0ab35a"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <div id="overlay" class="overlay"></div>
+
+    <div class="l-container" id='l-container'>
+        <div class="typewriter">
+            <div class="slide"><i></i></div>
+            <div class="paper"></div>
+            <div class="keyboard"></div>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="Exam-Name"><i class="fad fa-scroll"></i> Exam title
+            <h4 id="exam-name"></h4>
+        </div>
+        <i class="fas fa-user"></i> Presented by
+        <h4 id="exam-teacher"></h4>
+        <i class="fas fa-question"></i> Total Questions
+        <h4 id="tot-ques"></h4>
+    </div>
+
+    <div class="rightContainer">
+
+        <i class="fad fa-download" onclick="doCapture();"></i>
+
+        <div class="card-one" id="capture">
+
+            <h3>Non-Extensive Report Card</h3>
+
+            <div class="container">
+
+                <div class="topLabels">
+
+                    <label>Correct Answers</label>
+                    <label id="correct-percentage"></label>
+
+                </div>
+                <div class="progress">
+                    <div class="bar" id="correct-answer-bar"></div>
+                </div>
+
+                <label><span id="answers-in"></span> answer(s)</label>
+            </div>
+            <div class="container">
+
+                <div class="topLabels">
+
+                    <label>Incorrect Answers</label>
+                    <label id="incorrect-percentage"></label>
+
+                </div>
+                <div class="progress">
+                    <div class="bar" id="incorrect-answer-bar"></div>
+                </div>
+
+                <label><span id="answers"></span> answer(s)</label>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- CDN for Html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js" integrity="sha512-UcDEnmFoMh0dYHu0wGsf5SKB7z7i5j3GuXHCnb3i4s44hfctoLihr896bxM0zL7jGkcHQXXrJsFIL62ehtd6yQ==" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
